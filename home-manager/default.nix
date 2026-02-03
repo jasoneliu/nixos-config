@@ -19,6 +19,7 @@
 
     packages = with pkgs; [
       chromium # Primarly for VIA
+      playerctl
       xwayland-satellite
     ];
 
