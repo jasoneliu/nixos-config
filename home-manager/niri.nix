@@ -66,6 +66,11 @@
           color = "rgba(180, 190, 254, 0.6)";
         };
       };
+
+      # Configure shortcuts
+      struts = {
+        left = -8;
+      };
     };
 
     # Configure window rules
