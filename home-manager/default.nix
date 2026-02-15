@@ -9,6 +9,7 @@
     ./git.nix
     ./kitty.nix
     ./neovim.nix
+    ./niri.nix
     ./noctalia.nix
     ./vscode.nix
   ];

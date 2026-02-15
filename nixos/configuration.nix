@@ -8,6 +8,7 @@
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-amd-ai-300-series
     inputs.home-manager.nixosModules.home-manager
+    inputs.niri.nixosModules.niri
     
     ./hardware-configuration.nix
     ./users.nix
@@ -18,6 +19,7 @@
 
     overlays = [
       inputs.nur.overlays.default
+      inputs.niri.overlays.niri
     ];
   };
 
@@ -56,7 +58,11 @@
     networkmanager.enable = true;
   };
 
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri;
+  };
+  niri-flake.cache.enable = true;
 
   security.rtkit.enable = true;
 
