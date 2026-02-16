@@ -92,7 +92,6 @@
     enable = true;
     package = pkgs.niri;
   };
-  niri-flake.cache.enable = true;
 
   # Enable rtkit for audio
   security.rtkit.enable = true;
