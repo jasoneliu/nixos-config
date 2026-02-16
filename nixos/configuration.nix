@@ -91,6 +91,15 @@
     nh = {
       enable = true;
       flake = "/home/jason/nixos-config";
+
+      # Clean old NixOS generations
+      clean = {
+        enable = true;
+        dates = "weekly";
+
+        # Delete generations older than 30 days, but keep at least 5 generations
+        extraArgs = "--keep-since 30d --keep 5";
+      };
     };
 
     niri = {
