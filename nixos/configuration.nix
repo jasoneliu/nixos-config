@@ -24,10 +24,14 @@
   };
 
   nix = {
+    # Disable channels
     channel.enable = false;
 
     settings = {
+      # Enable flakes
       experimental-features = "nix-command flakes";
+
+      # Disable global registry
       flake-registry = "";
     };
   };
