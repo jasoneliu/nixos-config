@@ -83,6 +83,24 @@
       };
     };
 
+    greetd = {
+      enable = true;
+
+      settings = {
+        # Launch niri on startup
+        initial_session = {
+          command = "niri-session";
+          user = "jason";
+        };
+
+        # Fall back to tuigreet
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+          user = "greeter";
+        };
+      };
+    };
+
     power-profiles-daemon.enable = true;
     printing.enable = true;
     upower.enable = true;
