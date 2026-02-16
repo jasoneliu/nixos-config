@@ -133,6 +133,9 @@
     power-profiles-daemon.enable = true;
     upower.enable = true;
 
+    # Enable fingerprint reader, used for login and sudo
+    fprintd.enable = true;
+
     # Enable CUPS for printing
     printing.enable = true;
 
