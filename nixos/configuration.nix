@@ -24,21 +24,43 @@
   };
 
   nix = {
+    channel.enable = false;
+
     settings = {
       experimental-features = "nix-command flakes";
       flake-registry = "";
     };
-    
-    channel.enable = false;
   };
 
   boot = {
+    # Silence most kernel logs
+    consoleLogLevel = 0;
+
+    initrd = {
+      systemd.enable = true;
+
+      # Silence NixOS logs
+      verbose = false;
+    };
+
     kernelPackages = pkgs.linuxPackages_latest;
 
+    kernelParams = [
+      # Silence most kernel logs
+      "quiet"
+    ];
+
     loader = {
+      # Enable the systemd-boot EFI boot manager
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+
+      # Skip the boot menu
+      # To show the boot menu, press space repeatedly during boot
+      timeout = 0;
     };
+
+    plymouth.enable = true;
   };
   
   environment.systemPackages = with pkgs; [
@@ -89,13 +111,15 @@
       settings = {
         # Launch niri on startup
         initial_session = {
-          command = "niri-session";
+          # Silence niri log: https://github.com/niri-wm/niri/issues/254
+          command = "niri-session &> /dev/null";
           user = "jason";
         };
 
         # Fall back to tuigreet
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+          # Silence niri log: https://github.com/niri-wm/niri/issues/254
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session &> /dev/null";
           user = "greeter";
         };
       };
