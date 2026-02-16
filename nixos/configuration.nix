@@ -28,6 +28,9 @@
     channel.enable = false;
 
     settings = {
+      # Deduplicate store files
+      auto-optimise-store = true;
+
       # Enable flakes
       experimental-features = "nix-command flakes";
 
