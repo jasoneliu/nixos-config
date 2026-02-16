@@ -112,14 +112,14 @@
         # Launch niri on startup
         initial_session = {
           # Silence niri log: https://github.com/niri-wm/niri/issues/254
-          command = "niri-session &> /dev/null";
+          command = "niri-session 2> /dev/null";
           user = "jason";
         };
 
         # Fall back to tuigreet
         default_session = {
           # Silence niri log: https://github.com/niri-wm/niri/issues/254
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session &> /dev/null";
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session 2> /dev/null";
           user = "greeter";
         };
       };
