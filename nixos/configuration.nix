@@ -87,10 +87,16 @@
     networkmanager.enable = true;
   };
 
-  # Configure niri flake
-  programs.niri = {
-    enable = true;
-    package = pkgs.niri;
+  programs = {
+    nh = {
+      enable = true;
+      flake = "/home/jason/nixos-config";
+    };
+
+    niri = {
+      enable = true;
+      package = pkgs.niri;
+    };
   };
 
   # Enable rtkit for audio
