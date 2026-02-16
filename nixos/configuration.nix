@@ -80,15 +80,18 @@
     networkmanager.enable = true;
   };
 
+  # Configure niri flake
   programs.niri = {
     enable = true;
     package = pkgs.niri;
   };
   niri-flake.cache.enable = true;
 
+  # Enable rtkit for audio
   security.rtkit.enable = true;
 
   services = {
+    # Configure audio
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -105,6 +108,7 @@
       };
     };
 
+    # Configure greeter
     greetd = {
       enable = true;
 
@@ -125,9 +129,14 @@
       };
     };
 
+    # Enable power services
     power-profiles-daemon.enable = true;
-    printing.enable = true;
     upower.enable = true;
+
+    # Enable CUPS for printing
+    printing.enable = true;
+
+    # Configure udev to support VIA
     udev.packages = [ pkgs.via ];
   };
 
