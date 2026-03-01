@@ -1,14 +1,18 @@
 {
   config,
+  pkgs,
   ...
 }: {
-  programs.niri.settings = {
+  programs.niri.settings = let
+    kitty = "${pkgs.kitty}/bin/kitty";
+    noctalia-shell = "${pkgs.noctalia-shell}/bin/noctalia-shell";
+  in {
     # Spawn processes at startup
     spawn-at-startup = [
       # Start Noctalia
       {
         command = [
-          "noctalia-shell"
+          noctalia-shell
         ];
       }
 
@@ -23,10 +27,10 @@
               # Check if Noctalia has started
               if [ -S /run/user/$(id -u)/quickshell/by-id/*/ipc.sock ]; then
                 # Try locking screen
-                noctalia-shell ipc call lockScreen lock
+                ${noctalia-shell} ipc call lockScreen lock
                 
                 # Check if lock screen is active
-                if noctalia-shell ipc call state all | grep -q '"lockScreenActive": true'; then
+                if ${noctalia-shell} ipc call state all | grep -q '"lockScreenActive": true'; then
                   break
                 fi
               fi
@@ -172,9 +176,9 @@
       # ------------------------------ System ------------------------------
 
       # Audio
-      "XF86AudioRaiseVolume".action.spawn = ["noctalia-shell" "ipc" "call" "volume" "increase"];
-      "XF86AudioLowerVolume".action.spawn = ["noctalia-shell" "ipc" "call" "volume" "decrease"];
-      "XF86AudioMute".action.spawn = ["noctalia-shell" "ipc" "call" "volume" "muteOutput"];
+      "XF86AudioRaiseVolume".action.spawn = [noctalia-shell "ipc" "call" "volume" "increase"];
+      "XF86AudioLowerVolume".action.spawn = [noctalia-shell "ipc" "call" "volume" "decrease"];
+      "XF86AudioMute".action.spawn = [noctalia-shell "ipc" "call" "volume" "muteOutput"];
 
       # Media
       "XF86AudioPlay".action.spawn = ["playerctl" "play-pause"];
@@ -182,8 +186,8 @@
       "XF86AudioNext".action.spawn = ["playerctl" "next"];
 
       # Brightness
-      "XF86MonBrightnessUp".action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "increase"];
-      "XF86MonBrightnessDown".action.spawn = ["noctalia-shell" "ipc" "call" "brightness" "decrease"];
+      "XF86MonBrightnessUp".action.spawn = [noctalia-shell "ipc" "call" "brightness" "increase"];
+      "XF86MonBrightnessDown".action.spawn = [noctalia-shell "ipc" "call" "brightness" "decrease"];
       
       # Screenshots
       "Print".action.screenshot = {
@@ -197,12 +201,12 @@
       # ------------------------------ User ------------------------------
 
       # Applications
-      "Mod+Return".action.spawn = "kitty";
+      "Mod+Return".action.spawn = kitty;
 
       # Noctalia
-      "Mod+Space".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
-      "Mod+S".action.spawn = ["noctalia-shell" "ipc" "call" "controlCenter" "toggle"];
-      "Mod+Escape".action.spawn = ["noctalia-shell" "ipc" "call" "lockScreen" "lock"];
+      "Mod+Space".action.spawn = [noctalia-shell "ipc" "call" "launcher" "toggle"];
+      "Mod+S".action.spawn = [noctalia-shell "ipc" "call" "controlCenter" "toggle"];
+      "Mod+Escape".action.spawn = [noctalia-shell "ipc" "call" "lockScreen" "lock"];
       
       # ------------------------------ Niri ------------------------------
       
