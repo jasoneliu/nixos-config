@@ -158,6 +158,20 @@
       };
     };
 
+    logind.settings = {
+      Login = {
+        # Suspend on lid close
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "suspend";
+
+        # Always handle lid events, ignoring inhibitor locks
+        LidSwitchIgnoreInhibited = "yes";
+
+        # Add short lid event cooldown to detect hotplugged devices (e.g. external monitors or docks)
+        HoldoffTimeoutSec = "1s";
+      };
+    };
+
     # Enable power services
     power-profiles-daemon.enable = true;
     upower.enable = true;
