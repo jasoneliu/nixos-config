@@ -206,7 +206,7 @@
       # Noctalia
       "Mod+Space".action.spawn = [noctalia-shell "ipc" "call" "launcher" "toggle"];
       "Mod+S".action.spawn = [noctalia-shell "ipc" "call" "controlCenter" "toggle"];
-      "Mod+Escape".action.spawn = [noctalia-shell "ipc" "call" "lockScreen" "lock"];
+      "Mod+Escape".action.spawn = [noctalia-shell "ipc" "call" "sessionMenu" "toggle"];
       
       # ------------------------------ Niri ------------------------------
       
