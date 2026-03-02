@@ -105,8 +105,9 @@
         };
       };
 
-      # Configure shortcuts
+      # Configure struts
       struts = {
+        # Horizontally center Noctalia bar in left gap
         left = -8;
       };
     };
