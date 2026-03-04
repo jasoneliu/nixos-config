@@ -7,39 +7,12 @@
     kitty = "${pkgs.kitty}/bin/kitty";
     noctalia-shell = "${pkgs.noctalia-shell}/bin/noctalia-shell";
   in {
-    # Spawn processes at startup
+    # Start Noctalia at startup
     spawn-at-startup = [
-      # Start Noctalia
       {
         command = [
           noctalia-shell
         ];
-      }
-
-      # Show Noctalia lock screen on startup
-      { 
-        command = [
-          "sh" "-c" 
-          ''
-            # Check every 1ms for up to 1s
-            i=0
-            while [ $i -lt 1000 ]; do
-              # Check if Noctalia has started
-              if [ -S /run/user/$(id -u)/quickshell/by-id/*/ipc.sock ]; then
-                # Try locking screen
-                ${noctalia-shell} ipc call lockScreen lock
-                
-                # Check if lock screen is active
-                if ${noctalia-shell} ipc call state all | grep -q '"lockScreenActive": true'; then
-                  break
-                fi
-              fi
-
-              sleep 0.001
-              i=$((i+1))
-            done
-          ''
-        ]; 
       }
     ];
 

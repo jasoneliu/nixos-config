@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -9,7 +10,10 @@
   programs.noctalia-shell = {
     enable = true;
 
-    settings = {
+    settings = let
+      kitty = "${pkgs.kitty}/bin/kitty";
+      noctalia-shell = "${pkgs.noctalia-shell}/bin/noctalia-shell";
+    in {
       settingsVersion = 53;
       bar = {
         barType = "floating";
@@ -262,7 +266,7 @@
         pinnedApps = [ ];
         useApp2Unit = false;
         sortByMostUsed = true;
-        terminalCommand = "kitty -e";
+        terminalCommand = "${kitty} -e";
         customLaunchPrefixEnabled = false;
         customLaunchPrefix = "";
         viewMode = "list";
@@ -541,14 +545,14 @@
         manualSunset = "18:30";
       };
       hooks = {
-        enabled = false;
+        enabled = true;
         wallpaperChange = "";
         darkModeChange = "";
         screenLock = "";
         screenUnlock = "";
         performanceModeEnabled = "";
         performanceModeDisabled = "";
-        startup = "";
+        startup = "${noctalia-shell} ipc call lockScreen lock";
         session = "";
       };
       plugins.autoUpdate = false;
