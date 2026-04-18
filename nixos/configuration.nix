@@ -78,6 +78,7 @@
   environment.systemPackages = with pkgs; [
     git
     qmk
+    unzip
     via
     vim
   ];
