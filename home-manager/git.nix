@@ -1,11 +1,12 @@
 {
   pkgs,
   ...
-}: {
+}:
+{
   programs.git = {
     enable = true;
 
-    settings= {
+    settings = {
       user = {
         name = "jasoneliu";
         email = "jasoneliu03@gmail.com";

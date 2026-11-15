@@ -4,12 +4,13 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-amd-ai-300-series
     inputs.home-manager.nixosModules.home-manager
     inputs.niri.nixosModules.niri
-    
+
     ./hardware-configuration.nix
     ./users.nix
   ];
@@ -74,7 +75,7 @@
 
     plymouth.enable = true;
   };
-  
+
   environment.systemPackages = with pkgs; [
     git
     qmk
@@ -139,24 +140,26 @@
     greetd = {
       enable = true;
 
-      settings = let
-        niri-session = "${pkgs.niri}/bin/niri-session";
-        tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
-      in {
-        # Launch niri on startup
-        initial_session = {
-          # Silence niri log: https://github.com/niri-wm/niri/issues/254
-          command = "${niri-session} 2> /dev/null";
-          user = "jason";
-        };
+      settings =
+        let
+          niri-session = "${pkgs.niri}/bin/niri-session";
+          tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
+        in
+        {
+          # Launch niri on startup
+          initial_session = {
+            # Silence niri log: https://github.com/niri-wm/niri/issues/254
+            command = "${niri-session} 2> /dev/null";
+            user = "jason";
+          };
 
-        # Fall back to tuigreet
-        default_session = {
-          # Silence niri log: https://github.com/niri-wm/niri/issues/254
-          command = "${tuigreet} --time --remember --cmd ${niri-session} 2> /dev/null";
-          user = "greeter";
+          # Fall back to tuigreet
+          default_session = {
+            # Silence niri log: https://github.com/niri-wm/niri/issues/254
+            command = "${tuigreet} --time --remember --cmd ${niri-session} 2> /dev/null";
+            user = "greeter";
+          };
         };
-      };
     };
 
     logind.settings = {

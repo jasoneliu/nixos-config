@@ -1,9 +1,10 @@
 # Home configuration
 
-{ 
+{
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./firefox.nix
     ./git.nix

@@ -1,7 +1,8 @@
-{ 
+{
   inputs,
   ...
-}: {
+}:
+{
   users.users.jason = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];

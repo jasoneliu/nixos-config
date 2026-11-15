@@ -1,7 +1,8 @@
-{ 
+{
   pkgs,
   ...
-}: {
+}:
+{
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -12,7 +13,7 @@
       ];
       userSettings = {
         "telemetry.enableTelemetry" = false;
-        "editor.formatOnSave" = true; 
+        "editor.formatOnSave" = true;
       };
     };
   };
