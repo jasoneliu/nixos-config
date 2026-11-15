@@ -12,6 +12,7 @@
       ];
       userSettings = {
         "telemetry.enableTelemetry" = false;
+        "editor.formatOnSave" = true; 
       };
     };
   };

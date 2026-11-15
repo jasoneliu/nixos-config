@@ -21,6 +21,7 @@
 
     packages = with pkgs; [
       chromium # Primarly for VIA
+      nixfmt
       playerctl
       xwayland-satellite
     ];
