@@ -7,14 +7,14 @@
   programs.niri.settings =
     let
       kitty = "${pkgs.kitty}/bin/kitty";
-      noctalia-shell = "${pkgs.noctalia-shell}/bin/noctalia-shell";
+      noctalia = "${pkgs.noctalia}/bin/noctalia";
     in
     {
       # Start Noctalia at startup
       spawn-at-startup = [
         {
           command = [
-            noctalia-shell
+            noctalia
           ];
         }
       ];
@@ -129,7 +129,7 @@
         {
           matches = [
             {
-              namespace = "^noctalia-overview*";
+              namespace = "^noctalia-backdrop";
             }
           ];
           place-within-backdrop = true;
@@ -154,25 +154,19 @@
 
         # Audio
         "XF86AudioRaiseVolume".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
-          "volume"
-          "increase"
+          noctalia
+          "msg"
+          "volume-up"
         ];
         "XF86AudioLowerVolume".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
-          "volume"
-          "decrease"
+          noctalia
+          "msg"
+          "volume-down"
         ];
         "XF86AudioMute".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
-          "volume"
-          "muteOutput"
+          noctalia
+          "msg"
+          "volume-mute"
         ];
 
         # Media
@@ -191,28 +185,32 @@
 
         # Brightness
         "XF86MonBrightnessUp".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
-          "brightness"
-          "increase"
+          noctalia
+          "msg"
+          "brightness-up"
         ];
         "XF86MonBrightnessDown".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
-          "brightness"
-          "decrease"
+          noctalia
+          "msg"
+          "brightness-down"
         ];
 
         # Screenshots
-        "Print".action.screenshot = {
-          show-pointer = false;
-        };
-        "Ctrl+Print".action.screenshot-screen = {
-          show-pointer = false;
-        };
-        "Shift+Print".action.screenshot-window = { };
+        "Print".action.spawn = [
+          noctalia
+          "msg"
+          "screenshot-region"
+        ];
+        "Ctrl+Print".action.spawn = [
+          noctalia
+          "msg"
+          "screenshot-fullscreen"
+        ];
+        "Shift+Print".action.spawn = [
+          noctalia
+          "msg"
+          "screenshot-window"
+        ];
 
         # ------------------------------ User ------------------------------
 
@@ -221,25 +219,22 @@
 
         # Noctalia
         "Mod+Space".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
+          noctalia
+          "msg"
+          "panel-toggle"
           "launcher"
-          "toggle"
         ];
         "Mod+S".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
-          "controlCenter"
-          "toggle"
+          noctalia
+          "msg"
+          "panel-toggle"
+          "control-center"
         ];
         "Mod+Escape".action.spawn = [
-          noctalia-shell
-          "ipc"
-          "call"
-          "sessionMenu"
-          "toggle"
+          noctalia
+          "msg"
+          "panel-toggle"
+          "session"
         ];
 
         # ------------------------------ Niri ------------------------------

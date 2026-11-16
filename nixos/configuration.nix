@@ -22,9 +22,9 @@
       inputs.nur.overlays.default
       inputs.niri.overlays.niri
 
-      # Force noctalia-shell to use the flake input version globally
+      # Force noctalia to use the flake input version globally
       (final: prev: {
-        noctalia-shell = inputs.noctalia.packages.${prev.stdenv.hostPlatform.system}.default;
+        noctalia = inputs.noctalia.packages.${prev.stdenv.hostPlatform.system}.default;
       })
     ];
   };
