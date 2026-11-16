@@ -12,7 +12,6 @@
     ./neovim.nix
     ./niri.nix
     ./noctalia.nix
-    ./swayidle.nix
     ./vscode.nix
   ];
 
