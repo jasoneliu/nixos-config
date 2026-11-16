@@ -22,6 +22,7 @@
           background_opacity = 0;
           capsule = true;
           center = [ "workspaces" ];
+          compositor_blur = false;
           dead_zone = {
             click_through = true;
           };
