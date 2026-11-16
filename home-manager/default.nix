@@ -12,7 +12,7 @@
     ./neovim.nix
     ./niri.nix
     ./noctalia.nix
-    ./vscode.nix
+    ./vscodium.nix
   ];
 
   home = {
@@ -27,7 +27,7 @@
     ];
 
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-    stateVersion = "25.11";
+    stateVersion = "26.11";
   };
 
   programs.home-manager.enable = true;
