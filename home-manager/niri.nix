@@ -77,14 +77,14 @@
         focus-ring = {
           width = 3;
           active = {
-            color = "rgba(180, 190, 254, 0.6)";
+            color = "rgba(235, 188, 186, 0.6)";
           };
         };
 
         # Configure struts
         struts = {
-          # Horizontally center Noctalia bar in left gap
-          left = -8;
+          # Reserve space for Noctalia bar on the left screen edge
+          left = 26;
         };
       };
 
