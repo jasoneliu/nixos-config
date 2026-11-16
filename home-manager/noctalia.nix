@@ -143,14 +143,9 @@
       };
       wallpaper = {
         default = {
-          path = "/home/jason/Pictures/Wallpapers/evening-sky.png";
+          path = "${../wallpapers/evening-sky.png}";
         };
-        directory = "/home/jason/Pictures/Wallpapers";
-        monitors = {
-          eDP-1 = {
-            path = "/home/jason/Pictures/Wallpapers/evening-sky.png";
-          };
-        };
+        directory = "${../wallpapers}";
         transition = [ "disc" ];
       };
       weather = {
