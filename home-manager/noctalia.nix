@@ -89,6 +89,86 @@
         transition = [ "disc" ];
         transition_duration = 700;
       };
+      lockscreen_widgets = {
+        enabled = true;
+        grid = {
+          cell_size = 16;
+          major_interval = 4;
+          visible = true;
+        };
+        schema_version = 2;
+        widget = {
+          "lockscreen-login-box@eDP-1" = {
+            box_height = 196;
+            box_width = 810;
+            cx = 853.5;
+            cy = 883.5;
+            output = "eDP-1";
+            placement_height = 1067;
+            placement_width = 1707;
+            rotation = 0;
+            settings = {
+              background_color = "surface_container";
+              background_opacity = 0.88;
+              background_radius = 12;
+              center_password_text = false;
+              input_opacity = 1;
+              input_radius = 6;
+              layout = "regular";
+              show_caps_lock = false;
+              show_keyboard_layout = true;
+              show_login_button = true;
+              show_media = true;
+              show_media_controls = true;
+              show_password_reveal = true;
+              show_session_buttons = true;
+              show_unlock_hint = false;
+              show_weather = true;
+            };
+            type = "login_box";
+          };
+          lockscreen-widget-date = {
+            box_height = 48;
+            box_width = 208;
+            cx = 853.5;
+            cy = 141.5;
+            output = "eDP-1";
+            placement_height = 1067;
+            placement_width = 1707;
+            rotation = 0;
+            settings = {
+              background_opacity = 0;
+              format = "%a %b %e";
+              shadow = false;
+            };
+            type = "clock";
+          };
+          lockscreen-widget-time = {
+            box_height = 144;
+            box_width = 416;
+            cx = 853.5;
+            cy = 213.5;
+            output = "eDP-1";
+            placement_height = 1067;
+            placement_width = 1707;
+            rotation = 0;
+            settings = {
+              background_color = "surface";
+              background_opacity = 0;
+              clock_style = "digital";
+              color = "on_surface";
+              format = "%I:%M";
+              shadow = false;
+            };
+            type = "clock";
+          };
+        };
+        widget_order = [
+          "lockscreen-login-box@eDP-1"
+          "lockscreen-widget-date"
+          "lockscreen-widget-time"
+        ];
+      };
       nightlight = {
         enabled = true;
       };
@@ -153,7 +233,7 @@
       };
       widget = {
         clock = {
-          vertical_format = "%b%n%d%n—%n%I%n%M%n%p";
+          vertical_format = "%b%n%d%n—%n%I%n%M";
         };
         network = {
           show_label = false;
