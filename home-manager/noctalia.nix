@@ -22,6 +22,9 @@
           background_opacity = 0;
           capsule = true;
           center = [ "workspaces" ];
+          dead_zone = {
+            click_through = true;
+          };
           end = [
             "tray"
             "notifications"
