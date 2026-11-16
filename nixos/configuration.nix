@@ -106,6 +106,10 @@
       enable = true;
       package = pkgs.niri;
     };
+
+    steam = {
+      enable = true;
+    };
   };
 
   # Enable rtkit for audio
