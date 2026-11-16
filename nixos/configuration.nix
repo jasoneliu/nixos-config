@@ -38,7 +38,7 @@
       auto-optimise-store = true;
 
       # Enable flakes
-      experimental-features = "nix-command flakes";
+      experimental-features = [ "nix-command flakes" ];
 
       # Disable global registry
       flake-registry = "";
@@ -48,13 +48,6 @@
   boot = {
     # Silence most kernel logs
     consoleLogLevel = 0;
-
-    initrd = {
-      systemd.enable = true;
-
-      # Silence NixOS logs
-      verbose = false;
-    };
 
     kernelPackages = pkgs.linuxPackages_latest;
 
