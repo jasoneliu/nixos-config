@@ -26,6 +26,15 @@
       xwayland-satellite
     ];
 
+    pointerCursor = {
+      enable = true;
+      gtk.enable = true;
+
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 20;
+    };
+
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "26.11";
   };

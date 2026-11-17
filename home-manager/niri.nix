@@ -45,6 +45,12 @@
           ];
         };
 
+        # Configure cursor style
+        cursor = {
+          xcursor-theme = "Bibata-Modern-Ice";
+          xcursor-size = 20;
+        };
+
         # Configure windows layout
         layout = {
           # Set gaps around windows
