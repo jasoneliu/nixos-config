@@ -10,6 +10,7 @@
     inputs.nixos-hardware.nixosModules.framework-16-amd-ai-300-series
     inputs.home-manager.nixosModules.home-manager
 
+    ./fonts.nix
     ./hardware-configuration.nix
     ./users.nix
   ];
