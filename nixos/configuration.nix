@@ -110,10 +110,65 @@
     };
   };
 
-  # Enable rtkit for audio
-  security.rtkit.enable = true;
+  security = {
+    # Enable rtkit for audio
+    rtkit.enable = true;
+
+    # Disable fingerprint during login
+    pam.services.login.fprintAuth = false;
+  };
 
   services = {
+    # Configure greeter
+    displayManager.noctalia-greeter = {
+      enable = true;
+
+      settings = {
+        appearance = {
+          scheme = "Rosé Pine";
+          hide_logo = true;
+          power_buttons_position = "bottom-right";
+          scheme_selector_position = "hidden";
+          wallpaper = {
+            # blur = 0.2; # Blur doesn't apply for unknown reason
+            fill_mode = "crop";
+            path = "${../wallpapers/evening-sky.png}";
+          };
+        };
+        clock = {
+          position = "above-panel";
+          time_format = "%I:%M";
+          date_format = "%a %b %e";
+        };
+        cursor = {
+          path = pkgs.bibata-cursors;
+          theme = "Bibata-Modern-Ice";
+          size = 20;
+        };
+        output = {
+          # Use 1.6x scale to avoid 1px gap in wallpaper due to rounding
+          scales = "eDP-1:1.600";
+          transforms = "eDP-1:normal";
+          use_synced_settings = false;
+        };
+      };
+    };
+
+    # Configure lid events
+    logind.settings = {
+      Login = {
+        # Suspend on lid close
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "suspend";
+
+        # Always handle lid events, ignoring inhibitor locks
+        LidSwitchIgnoreInhibited = "yes";
+
+        # Add short lid event cooldown to detect hotplugged devices (e.g. external monitors or docks)
+        HoldoffTimeoutSec = "1s";
+      };
+    };
+
     # Configure audio
     pipewire = {
       enable = true;
@@ -128,46 +183,6 @@
             "alsa.use-ucm" = false;
           };
         };
-      };
-    };
-
-    # Configure greeter
-    greetd = {
-      enable = true;
-
-      settings =
-        let
-          niri-session = "${pkgs.niri}/bin/niri-session";
-          tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
-        in
-        {
-          # Launch niri on startup
-          initial_session = {
-            # Silence niri log: https://github.com/niri-wm/niri/issues/254
-            command = "${niri-session} 2> /dev/null";
-            user = "jason";
-          };
-
-          # Fall back to tuigreet
-          default_session = {
-            # Silence niri log: https://github.com/niri-wm/niri/issues/254
-            command = "${tuigreet} --time --remember --cmd ${niri-session} 2> /dev/null";
-            user = "greeter";
-          };
-        };
-    };
-
-    logind.settings = {
-      Login = {
-        # Suspend on lid close
-        HandleLidSwitch = "suspend";
-        HandleLidSwitchExternalPower = "suspend";
-
-        # Always handle lid events, ignoring inhibitor locks
-        LidSwitchIgnoreInhibited = "yes";
-
-        # Add short lid event cooldown to detect hotplugged devices (e.g. external monitors or docks)
-        HoldoffTimeoutSec = "1s";
       };
     };
 
