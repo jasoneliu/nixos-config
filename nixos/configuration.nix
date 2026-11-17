@@ -9,7 +9,6 @@
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-amd-ai-300-series
     inputs.home-manager.nixosModules.home-manager
-    inputs.niri.nixosModules.niri
 
     ./hardware-configuration.nix
     ./users.nix
@@ -20,7 +19,6 @@
 
     overlays = [
       inputs.nur.overlays.default
-      inputs.niri.overlays.niri
 
       # Force noctalia to use the flake input version globally
       (final: prev: {
@@ -104,7 +102,7 @@
 
     niri = {
       enable = true;
-      package = pkgs.niri;
+      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
 
     steam = {
