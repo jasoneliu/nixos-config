@@ -106,9 +106,9 @@
       package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
     };
 
-    steam = {
-      enable = true;
-    };
+    steam.enable = true;
+
+    zsh.enable = true;
   };
 
   security = {

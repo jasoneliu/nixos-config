@@ -1,10 +1,12 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 {
   users.users.jason = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [
       "networkmanager"
       "wheel"
