@@ -90,7 +90,7 @@
           # Configure struts
           struts = {
             # Reserve space for Noctalia bar on the left screen edge
-            left = 26;
+            left = 32;
           };
         };
 

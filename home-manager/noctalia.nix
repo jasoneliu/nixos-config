@@ -39,6 +39,7 @@
           position = "left";
           reserve_space = false;
           start = [ "clock" ];
+          thickness = 40;
         };
       };
       battery = {
@@ -240,6 +241,7 @@
         };
         workspaces = {
           empty_color = "tertiary";
+          scale = 1.1;
           show_labels = false;
         };
       };
