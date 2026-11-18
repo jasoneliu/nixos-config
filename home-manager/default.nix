@@ -13,6 +13,7 @@
     ./niri.nix
     ./noctalia.nix
     ./vscodium.nix
+    ./yazi.nix
   ];
 
   home = {
