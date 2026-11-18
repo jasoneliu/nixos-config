@@ -24,14 +24,80 @@ let
           pyftsubset "$outpath" --output-file="$outpath" --unicodes='*' --layout-features-='tnum'
         done
       '';
+
+  # Use custom Iosevka build
+  # Configured using https://typeof.net/Iosevka/customizer
+  iosevka = pkgs.iosevka.override {
+    set = "";
+    privateBuildPlan = ''
+      [buildPlans.Iosevka]
+      family = "Iosevka"
+      spacing = "normal"
+      serifs = "sans"
+      noCvSs = true
+      exportGlyphNames = false
+      noLigation = true
+
+      [buildPlans.Iosevka.variants.design]
+      one = "base"
+      two = "straight-neck-serifless"
+      four = "closed-serifless"
+      eight = "two-circles"
+      zero = "tall-slashed"
+      capital-d = "more-rounded-serifless"
+      capital-g = "toothless-rounded-serifless-hooked"
+      capital-j = "serifless"
+      capital-q = "crossing-baseline"
+      f = "flat-hook-serifless"
+      i = "serifed-flat-tailed"
+      l = "serifed-flat-tailed"
+      q = "tailed-serifless"
+      t = "flat-hook"
+      y = "straight-turn-serifless"
+      asterisk = "hex-low"
+      number-sign = "slanted"
+      percent = "rings-continuous-slash"
+
+      [buildPlans.Iosevka.weights.Regular]
+      shape = 400
+      menu = 400
+      css = 400
+
+      [buildPlans.Iosevka.weights.Bold]
+      shape = 700
+      menu = 700
+      css = 700
+
+      [buildPlans.Iosevka.widths.Normal]
+      shape = 600
+      menu = 5
+      css = "normal"
+
+      [buildPlans.Iosevka.slopes.Upright]
+      angle = 0
+      shape = "upright"
+      menu = "upright"
+      css = "normal"
+
+      [buildPlans.Iosevka.slopes.Italic]
+      angle = 9.4
+      shape = "italic"
+      menu = "italic"
+      css = "italic"
+    '';
+  };
 in
 {
   fonts = {
-    packages = [ satoshi ];
+    packages = [
+      satoshi
+      iosevka
+    ];
 
     fontconfig = {
       defaultFonts = {
         sansSerif = [ "Satoshi" ];
+        monospace = [ "Iosevka" ];
       };
     };
   };
