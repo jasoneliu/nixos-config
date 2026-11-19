@@ -2,6 +2,7 @@
 
 {
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -16,7 +17,13 @@
   ];
 
   nixpkgs = {
-    config.allowUnfree = true;
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-unwrapped"
+        "via"
+      ];
 
     overlays = [
       inputs.nur.overlays.default
