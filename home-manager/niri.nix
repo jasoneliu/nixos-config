@@ -45,6 +45,14 @@
           ];
         };
 
+        # Configure blur
+        # blur = {
+        #   passes = 2;
+        #   offset = 3.0;
+        #   noise = 0.03;
+        #   saturation = 1.0;
+        # };
+
         # Configure cursor style
         cursor = {
           xcursor-theme = "Bibata-Modern-Ice";
@@ -96,6 +104,19 @@
 
         # Configure layer and window rules
         _children = [
+          # Layer rules
+          {
+            # Add blur to noctalia layers
+            layer-rule = {
+              match._props = {
+                namespace = "^noctalia-(notification|osd|panel)$";
+              };
+              background-effect = {
+                blur = true;
+                xray = false;
+              };
+            };
+          }
           {
             # Set the Noctalia overview wallpaper on the backdrop
             layer-rule = {
@@ -103,6 +124,50 @@
                 namespace = "^noctalia-backdrop";
               };
               place-within-backdrop = true;
+            };
+          }
+
+          # Window rules
+          {
+            window-rule = {
+              # Add rounded corners to all windows
+              geometry-corner-radius = [
+                12.0
+                12.0
+                12.0
+                12.0
+              ];
+              clip-to-geometry = true;
+
+              # Remove focus ring background to make blur look clean
+              draw-border-with-background = false;
+            };
+          }
+          {
+            # Add blur to inactive windows
+            # Window stays active when switching workspaces or opening the overview
+            window-rule = {
+              match._props = {
+                is-active = false;
+              };
+              background-effect = {
+                blur = true;
+                xray = false;
+              };
+              opacity = 0.9;
+            };
+          }
+          {
+            # Add blur to floating windows
+            window-rule = {
+              match._props = {
+                is-floating = true;
+              };
+              background-effect = {
+                blur = true;
+                xray = false;
+              };
+              opacity = 0.9;
             };
           }
           {
@@ -113,27 +178,6 @@
                 title = "^Picture-in-Picture$";
               };
               open-floating = true;
-            };
-          }
-          {
-            # Add rounded corners to all windows
-            window-rule = {
-              geometry-corner-radius = [
-                12.0
-                12.0
-                12.0
-                12.0
-              ];
-              clip-to-geometry = true;
-            };
-          }
-          {
-            # Add transparency to non-active windows
-            window-rule = {
-              match._props = {
-                is-active = false;
-              };
-              opacity = 0.9;
             };
           }
         ];

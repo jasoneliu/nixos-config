@@ -21,6 +21,7 @@
         default = {
           background_opacity = 0;
           capsule = true;
+          capsule_opacity = 0.9;
           center = [ "workspaces" ];
           compositor_blur = false;
           dead_zone = {
@@ -182,6 +183,7 @@
           control_center_position = "center";
           session_placement = "floating";
           session_position = "center";
+          transparency_mode = "glass";
         };
         popup_borders = false;
         screenshot = {
