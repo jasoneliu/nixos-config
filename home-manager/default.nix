@@ -14,6 +14,7 @@
     ./noctalia.nix
     ./vscodium.nix
     ./yazi.nix
+    ./zsh.nix
   ];
 
   home = {
