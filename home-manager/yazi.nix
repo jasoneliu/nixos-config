@@ -1,6 +1,3 @@
 {
-  ...
-}:
-{
   programs.yazi.enable = true;
 }

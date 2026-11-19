@@ -1,6 +1,3 @@
 {
-  ...
-}:
-{
   programs.neovim.enable = true;
 }
