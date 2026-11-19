@@ -2,6 +2,7 @@
   pkgs,
   ...
 }:
+
 let
   # Use Satoshi with proportional numerals and alternate t (with tail)
   satoshi =
