@@ -209,6 +209,9 @@
         # Allow notification actions and window activation from Noctalia
         debug.honor-xdg-activation-with-invalid-serial = true;
 
+        # Disable recent windows (bound to Mod+grave by default)
+        recent-windows.off = { };
+
         # Configure keybinds
         binds = {
           # ------------------------------ System ------------------------------
