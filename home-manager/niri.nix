@@ -171,6 +171,21 @@
             };
           }
           {
+            # Add blur to kitty
+            window-rule = {
+              match._props = {
+                app-id = "^kitty$";
+              };
+              background-effect = {
+                blur = true;
+                xray = false;
+              };
+
+              # Background opacity is set to 0.9 by kitty config
+              opacity = 1.0;
+            };
+          }
+          {
             # Open the Firefox picture-in-picture player as floating by default
             window-rule = {
               match._props = {
