@@ -23,6 +23,7 @@
 
     packages = with pkgs; [
       chromium # Primarly for VIA
+      fastfetch
       nixfmt
       playerctl
       xwayland-satellite
