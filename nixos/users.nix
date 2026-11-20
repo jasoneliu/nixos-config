@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  self,
   ...
 }:
 {
@@ -14,9 +15,9 @@
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs self; };
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.jason = import ../home-manager;
+    users.jason = import "${self}/home-manager";
   };
 }

@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  self,
   ...
 }:
 {
@@ -226,9 +227,9 @@
       };
       wallpaper = {
         default = {
-          path = "${../assets/wallpapers/evening-sky.png}";
+          path = "${self}/assets/wallpapers/evening-sky.png";
         };
-        directory = "${../assets/wallpapers}";
+        directory = "${self}/assets/wallpapers";
         transition = [ "disc" ];
       };
       weather = {

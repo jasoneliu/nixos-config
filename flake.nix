@@ -42,7 +42,7 @@
     }:
     {
       nixosConfigurations.fw16 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs self; };
         modules = [
           ./nixos/configuration.nix
         ];
