@@ -94,12 +94,19 @@ in
     packages = [
       satoshi
       iosevka
+      pkgs.nerd-fonts.symbols-only
     ];
 
     fontconfig = {
       defaultFonts = {
-        sansSerif = [ "Satoshi" ];
-        monospace = [ "Iosevka" ];
+        sansSerif = [
+          "Satoshi"
+          "Symbols Nerd Font"
+        ];
+        monospace = [
+          "Iosevka"
+          "Symbols Nerd Font Mono"
+        ];
       };
     };
   };
