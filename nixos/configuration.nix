@@ -140,7 +140,7 @@
           wallpaper = {
             # blur = 0.2; # Blur doesn't apply for unknown reason
             fill_mode = "crop";
-            path = "${../wallpapers/evening-sky.png}";
+            path = "${../assets/wallpapers/evening-sky.png}";
           };
         };
         clock = {

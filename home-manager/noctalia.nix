@@ -226,9 +226,9 @@
       };
       wallpaper = {
         default = {
-          path = "${../wallpapers/evening-sky.png}";
+          path = "${../assets/wallpapers/evening-sky.png}";
         };
-        directory = "${../wallpapers}";
+        directory = "${../assets/wallpapers}";
         transition = [ "disc" ];
       };
       weather = {

@@ -15,7 +15,7 @@ let
       ''
         dir="$out/share/fonts/opentype/satoshi"
         mkdir -p "$dir"
-        for font in ${../fonts/satoshi}/*.otf; do
+        for font in ${../assets/fonts/satoshi}/*.otf; do
           outpath="$dir/$(basename "$font")"
 
           # Freeze proportional numerals and alternate t as default glyphs
